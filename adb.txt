@@ -1,0 +1,26 @@
+连接设备：adb connect 127.0.0.1:62001
+连接设备列表： adb devices
+进入安卓系统内部： adb shell（ls查看当前目录下的文件）
+退出安卓系统 exit
+下载命令的应用： adb pull  安卓文件路径 电脑本地路径
+（从安卓系统内部拉文件下来）
+卸载app  首先，查出第三方包名；然后执行卸载命令
+查看第三方包名： adb shell pm list packages -3 ；
+卸载：adb uninstall 包名
+上传命令的应用：adb push 电脑本地路径的文件  安卓存放路径
+安装app： 在安卓系统内部：pm install  文件存放路径
+第二种安装方式： adb install 去拉包/adb shell pm install 文件存放路径
+查看手机日志： adb logcat -v time 以时间格式查看日志/-t 100 查看最近100行 / -c清空日志缓存
+结束：ctrl+c
+清理应用缓存： adb shell pm clear 包名
+某一个app的日志信息：
+找到包名；过滤进程 ps | grep 包名；通过进程查看日志 adb logcat | findstr 进程id  导出日志>本地电脑的路径位置+起的日志名字.txt
+截屏：adb shell screencap 安卓存放路径+起的名字.图片格式（png/jpg/bmp）
+adb shell input keyevent 26 25 24 3 4 
+adb reboot 重启模拟器
+adb kill-server 关闭adb服务 
+adb start-server 启动adb服务
+
+monkey
+adb shell monkey -p com.moji.mjweather --throttle 300 -s 121213456 --pct-touch 35 --pct-motion 35 --ignore-timeouts --ignore-crashes --ignore-security-exceptions -vvv 300 >E:\123\45678\los.txt
+
